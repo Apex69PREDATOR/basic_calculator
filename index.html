@@ -8,9 +8,10 @@
     <style>
         body{
             display: flex;
-            justify-content: center;
+            justify-content: space-evenly;
             align-items: center;
             height: 100vh;
+            flex-direction: column;
         }
         .container{
             position: relative;
@@ -159,6 +160,7 @@
             </div>
         </div>
     </div>
+    <div style="display: none;font-size: 1.5em;" id="guide">Keep on clicking -> button after adding each value for desiered result <br> <span>please click <b>R</b> after getting the Simple Interest</span> </div>
     <script>
         function playaudio(path){
             let audio=new Audio(path)
@@ -319,6 +321,8 @@
         display.innerHTML="please click '-->' button to continue "
     })
     next.addEventListener('click',()=>{
+    let guide=document.getElementById("guide")
+    guide.style.display="block";
         if(cyclecount==0){
             display.innerHTML='principal='
         }
@@ -344,6 +348,7 @@
             let simple_interest=(principal*rate*time)/100
             display.innerHTML=`Simple Interest=${simple_interest.toString()}, Amount=${(principal+simple_interest).toString()}`
         display.style.fontSize='1.3em'
+        guide.style.display="none";
         }
         
         cyclecount++
